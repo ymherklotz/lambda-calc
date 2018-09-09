@@ -2,12 +2,12 @@ name:                lambda-calc
 version:             0.1.0.0
 -- synopsis:
 -- description:
-homepage:            https://github.com/githubuser/lambda-calc#readme
+homepage:            https://github.com/ymherklotz/lambda-calc#readme
 license:             BSD3
 license-file:        LICENSE
-author:              Author name here
-maintainer:          example@example.com
-copyright:           2018 Author name here
+author:              Yann Herklotz
+maintainer:          ymherklotz@gmail.com
+copyright:           2018 Yann Herklotz
 category:            Web
 build-type:          Simple
 cabal-version:       >=1.10
