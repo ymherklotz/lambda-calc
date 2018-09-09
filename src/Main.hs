@@ -14,13 +14,13 @@ data Expr = Var Char
           deriving (Show)
 
 main :: IO ()
-main = parse
+main = mparse
 
-parse :: IO ()
-parse = parseTest expr "\\x.\\y.yx"
+mparse :: IO ()
+mparse = parseTest expr "(λx.λy.yx)(λx.x)"
 
-paren :: Parser a -> Parser a
-paren = between (char '(') (char ')')
+parens :: Parser a -> Parser a
+parens = between (char '(') (char ')')
 
 var :: Parser Expr
 var = do
@@ -43,4 +43,4 @@ term = parens expr
 expr :: Parser Expr
 expr = do
   terms <- many term
-  return $ 
+  return $ foldl1 FuncAppl terms
