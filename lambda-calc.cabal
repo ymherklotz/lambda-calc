@@ -18,5 +18,7 @@ executable lambda-calc
   main-is:             Main.hs
   default-language:    Haskell2010
   other-modules:       LambdaCalc.Parser
+                     , LambdaCalc.Types
+                     , LambdaCalc.PrettyPrinter
   build-depends:       base >= 4.7 && < 5
                      , megaparsec >= 7.0.0

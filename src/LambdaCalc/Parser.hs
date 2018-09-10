@@ -8,12 +8,9 @@ import Data.String
 import Text.Megaparsec
 import Text.Megaparsec.Char
 
-type Parser = Parsec Void String
+import LambdaCalc.Types
 
-data Expr = Var Char
-          | FuncDef [Char] Expr
-          | FuncAppl Expr Expr
-          deriving (Show)
+type Parser = Parsec Void String
 
 mparse :: IO ()
 mparse = parseTest expr "(λx.λy.yx)(λx.x)"
