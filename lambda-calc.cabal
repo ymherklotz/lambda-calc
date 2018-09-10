@@ -17,5 +17,6 @@ executable lambda-calc
   hs-source-dirs:      src
   main-is:             Main.hs
   default-language:    Haskell2010
+  other-modules:       LambdaCalc.Parser
   build-depends:       base >= 4.7 && < 5
                      , megaparsec >= 7.0.0
