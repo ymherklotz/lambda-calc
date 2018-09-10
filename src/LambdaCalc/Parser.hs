@@ -22,9 +22,7 @@ parens :: Parser a -> Parser a
 parens = between (char '(') (char ')')
 
 var :: Parser Expr
-var = do
-  ch <- lowerChar
-  return $ Var ch
+var = Var <$> lowerChar
 
 lambda :: Parser Expr
 lambda = do
@@ -40,6 +38,4 @@ term = parens expr
   <|> var
 
 expr :: Parser Expr
-expr = do
-  terms <- many term
-  return $ foldl1 FuncAppl terms
+expr = foldl1 FuncAppl <$> many term
