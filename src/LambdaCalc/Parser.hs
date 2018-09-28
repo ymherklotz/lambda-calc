@@ -3,23 +3,17 @@ module LambdaCalc.Parser
   ) where
 
 import Data.Void
-import Data.String
-
+import LambdaCalc.Types
 import Text.Megaparsec
 import Text.Megaparsec.Char
 
-import LambdaCalc.Types
-
 type Parser = Parsec Void String
-
-mparse :: IO ()
-mparse = parseTest expr "(λx.λy.yx)(λx.x)"
 
 parens :: Parser a -> Parser a
 parens = between (char '(') (char ')')
 
 var :: Parser Expr
-var = Var <$> lowerChar
+var = Variable . Var <$> lowerChar
 
 lambda :: Parser Expr
 lambda = do
@@ -27,7 +21,7 @@ lambda = do
   ch <- many lowerChar
   _ <- char '.'
   ex <- expr
-  return $ FuncDef ch ex
+  return $ Def (Var <$> ch) ex
 
 term :: Parser Expr
 term = parens expr
@@ -35,4 +29,7 @@ term = parens expr
   <|> var
 
 expr :: Parser Expr
-expr = foldl1 FuncAppl <$> many term
+expr = foldl1 Appl <$> many term
+
+mparse :: IO ()
+mparse = parseTest expr "(λx.λy.yx)(λx.x)"

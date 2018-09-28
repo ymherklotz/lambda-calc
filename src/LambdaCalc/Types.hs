@@ -1,6 +1,9 @@
 module LambdaCalc.Types where
 
-data Expr = Var Char
-          | FuncDef [Char] Expr
-          | FuncAppl Expr Expr
-          deriving (Show)
+newtype Var = Var {getVar :: Char}
+            deriving Show
+
+data Expr = Variable Var
+          | Def [Var] Expr
+          | Appl Expr Expr
+          deriving Show
