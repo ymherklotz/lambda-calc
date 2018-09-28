@@ -1,17 +1,17 @@
-name:                lambda-calc
-version:             0.1.0.0
+name:                  lambda-calc
+version:               0.1.0.0
 -- synopsis:
 -- description:
-homepage:            https://github.com/ymherklotz/lambda-calc#readme
-license:             BSD-3-Clause
-license-file:        LICENSE
-author:              Yann Herklotz
-maintainer:          ymherklotz@gmail.com
-copyright:           2018 Yann Herklotz
-category:            Web
-build-type:          Simple
-cabal-version:       >=1.10
-extra-source-files:  README.md
+homepage:              https://github.com/ymherklotz/lambda-calc#readme
+license:               BSD3
+license-file:          LICENSE
+author:                Yann Herklotz
+maintainer:            ymherklotz@gmail.com
+copyright:             2018 Yann Herklotz
+category:              Web
+build-type:            Simple
+cabal-version:         >= 1.10
+extra-source-files:    README.md
 
 executable lambda-calc
   hs-source-dirs:      src
@@ -24,6 +24,8 @@ executable lambda-calc
                      , megaparsec >= 7.0.0
 
 test-suite lambda-calc-test
-  type:                detailed-1.0
-  test-module:         Test.LambdaComp
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      tests
+  main-is:             Test.hs
   build-depends:       base >= 4.7 && < 5
+                     , QuickCheck >= 2.12
