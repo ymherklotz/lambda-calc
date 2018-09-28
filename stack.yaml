@@ -7,3 +7,4 @@ packages:
 # Dependency packages to be pulled from upstream that are not in the resolver
 extra-deps:
   - megaparsec-7.0.0
+  - QuickCheck-2.12.4
