@@ -4,6 +4,8 @@ module LambdaCalc.Parser
 
 import Data.Void
 import LambdaCalc.Types
+import LambdaCalc.Simplify
+import LambdaCalc.PrettyPrinter
 import Text.Megaparsec
 import Text.Megaparsec.Char
 
@@ -32,4 +34,8 @@ expr :: Parser Expr
 expr = foldl1 Appl <$> many term
 
 mparse :: IO ()
-mparse = parseTest expr "(λx.λy.yx)(λx.x)"
+mparse = case parse expr "" "(λx.λy.yx)(λx.x)z" of
+  Left bundle -> putStr (errorBundlePretty bundle)
+  Right xs -> do
+    putStrLn . pprint $ xs
+    putStrLn . pprint . betaReduce . betaReduce $ xs

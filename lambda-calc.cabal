@@ -6,7 +6,7 @@ homepage:              https://github.com/ymherklotz/lambda-calc#readme
 license:               BSD3
 license-file:          LICENSE
 author:                Yann Herklotz
-maintainer:            ymherklotz@gmail.com
+maintainer:            ymherklotz AT gmail DOT com
 copyright:             2018 Yann Herklotz
 category:              Web
 build-type:            Simple
@@ -20,6 +20,7 @@ executable lambda-calc
   other-modules:       LambdaCalc.Parser
                      , LambdaCalc.Types
                      , LambdaCalc.PrettyPrinter
+                     , LambdaCalc.Simplify
   build-depends:       base >= 4.7 && < 5
                      , megaparsec >= 7.0.0
 
